@@ -38,7 +38,7 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: 'get-childitem ''%userprofile%\.nuget\packages'' -recurse -force | where-object { $_.FullName.Length -ge 256 } | select-object FullName | format-list'
+    script: 'get-childitem ''c:\'' -recurse -force | where-object { $_.FullName.Length -ge 256 } | select-object FullName | format-list'
     #workingDirectory: '%userprofile%\.nuget\packages'
 
 #- task: NuGetCommand@2
