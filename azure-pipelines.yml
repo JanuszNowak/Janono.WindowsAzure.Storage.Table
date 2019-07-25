@@ -23,13 +23,13 @@ steps:
   inputs:
     versionSpec: 4.9.3
 
-- task: PowerShell@2
-  displayName: 'List local nuget pacakges'
-  inputs:
-    targetType: 'inline'
-    script: 'Get-ChildItem -Recurse $(UserProfile)\.nuget\packages'
-  continueOnError: true
-  #can not exist
+# - task: PowerShell@2
+#   displayName: 'List local nuget pacakges'
+#   inputs:
+#     targetType: 'inline'
+#     script: 'Get-ChildItem -Recurse $(UserProfile)\.nuget\packages'
+#   continueOnError: true
+#   #can not exist
 
 
 - task: CacheBeta@0
