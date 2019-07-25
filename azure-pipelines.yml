@@ -32,7 +32,7 @@ steps:
   inputs:
     key: 'ket'
     path: 'path'
-    cacheHitVar: 'cachehitvaribae'
+    cacheHitVar: '$(Agent.BuildDirectory)'
 
 
 # - task: PowerShell@2
