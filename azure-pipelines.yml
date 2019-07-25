@@ -18,10 +18,10 @@ variables:
 
 
 steps:
-- task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 4.9.3'
-  inputs:
-    versionSpec: 4.9.3
+# - task: NuGetToolInstaller@0
+#   displayName: 'Use NuGet 4.9.3'
+#   inputs:
+#     versionSpec: 4.9.3
 
 # - task: PowerShell@2
 #   displayName: 'List local nuget pacakges'
@@ -32,12 +32,12 @@ steps:
 #   #can not exist
 
 
-- task: CacheBeta@0
-  inputs:
-    key: |
-      $(Agent.OS)
-      $(UserProfile)\.nuget\packages
-    path: $(UserProfile)\.nuget\packages
+# - task: CacheBeta@0
+#   inputs:
+#     key: |
+#       $(Agent.OS)
+#       $(UserProfile)\.nuget\packages
+#     path: $(UserProfile)\.nuget\packages
 
 
 - task: NuGetCommand@2
