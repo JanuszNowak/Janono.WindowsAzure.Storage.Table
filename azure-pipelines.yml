@@ -39,9 +39,10 @@ steps:
 
 
 - task: PowerShell@2
+  displayName: 'List local nuget pacakges'
   inputs:
     targetType: 'inline'
-    script: 'Get-ChildItem $(UserProfile)\.nuget\packages'
+    script: 'Get-ChildItem $(UserProfile)\.nuget\packages'    
 
 # - task: PowerShell@2
 #   inputs:
