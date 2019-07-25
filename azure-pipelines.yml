@@ -32,12 +32,12 @@ steps:
   #can not exist
 
 
-# - task: CacheBeta@0
-#   inputs:
-#     key: |
-#       $(Agent.OS)
-#       $(UserProfile)\.nuget\packages
-#     path: $(UserProfile)\.nuget\packages
+- task: CacheBeta@0
+  inputs:
+    key: |
+      $(Agent.OS)
+      $(UserProfile)\.nuget\packages
+    path: $(UserProfile)\.nuget\packages
 
 
 - task: NuGetCommand@2
