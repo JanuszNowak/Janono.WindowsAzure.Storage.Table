@@ -28,6 +28,9 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'Get-ChildItem -Recurse $(UserProfile)\.nuget\packages'
+  continueOnError: true
+  #can not exist
+
 
 # - task: CacheBeta@0
 #   inputs:
