@@ -67,6 +67,12 @@ steps:
     versionEnvVar: 'CI_Version'
     includeSymbols: true
 
+    
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
 #- task: NuGetCommand@2
   #displayName: 'NuGet push'
   #inputs:
