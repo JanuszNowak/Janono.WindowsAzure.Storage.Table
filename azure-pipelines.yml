@@ -30,9 +30,10 @@ steps:
     feedsToUse: 'config'
 - task: CacheBeta@0
   inputs:
-    key: 'ket'
-    path: 'path'
-    cacheHitVar: '$(Agent.BuildDirectory)'
+    key: |
+      $(Agent.OS)
+      $(Build.SourcesDirectory)/xxx
+    path: $(Agent.BuildDirectory)  
 
 
 # - task: PowerShell@2
