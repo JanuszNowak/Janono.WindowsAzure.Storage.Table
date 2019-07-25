@@ -72,7 +72,9 @@ steps:
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
+    nuGetFeedType: external
+    publishFeedCredentials: 'Janono.WindowsAzure.Storage.Table-Nuget.org'
+
 #- task: NuGetCommand@2
   #displayName: 'NuGet push'
   #inputs:
