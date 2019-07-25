@@ -23,6 +23,14 @@ steps:
 #   inputs:
 #     versionSpec: 4.9.3
 
+
+ - task: NuGetToolInstaller@0
+   displayName: 'Use NuGet 3.5.0.1737'
+   inputs:
+     versionSpec: 3.5.0.1737
+
+
+
 # - task: PowerShell@2
 #   displayName: 'List local nuget pacakges'
 #   inputs:
