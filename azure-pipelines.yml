@@ -22,18 +22,20 @@ steps:
   displayName: 'Use NuGet 4.9.3'
   inputs:
     versionSpec: 4.9.3
-    
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'config'
+
 - task: CacheBeta@0
   inputs:
     key: |
       $(Agent.OS)
       $(Build.SourcesDirectory)/xxx
     path: $(Agent.BuildDirectory)  
+
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'config'
 
 
 # - task: PowerShell@2
