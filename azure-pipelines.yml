@@ -28,12 +28,18 @@ steps:
     command: 'restore'
     restoreSolution: '**/*.sln'
     feedsToUse: 'config'
+- task: CacheBeta@0
+  inputs:
+    key: 'ket'
+    path: 'path'
+    cacheHitVar: 'cachehitvaribae'
+
 
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: 'get-childitem ''c:\whatever'' -recurse -force | where-object { $_.FullName.Length -ge 256 } | select-object FullName | format-list'
-    workingDirectory: '%userprofile%\.nuget\packages'
+    script: 'get-childitem ''%userprofile%\.nuget\packages'' -recurse -force | where-object { $_.FullName.Length -ge 256 } | select-object FullName | format-list'
+    #workingDirectory: '%userprofile%\.nuget\packages'
 
 #- task: NuGetCommand@2
   #displayName: 'NuGet restore'
