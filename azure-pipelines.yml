@@ -23,13 +23,13 @@ steps:
   inputs:
     versionSpec: 4.9.3
 
-- task: NuGetCommand@2
-  displayName: 'NuGet restore'
-  inputs:
-    vstsFeed: 'b0de43cf-f634-4601-80fc-bf3fa6a015e9'
-    versioningScheme: byEnvVar
-    versionEnvVar: 'CI_Version'
-    includeSymbols: true
+#- task: NuGetCommand@2
+  #displayName: 'NuGet restore'
+  #inputs:
+    #vstsFeed: 'b0de43cf-f634-4601-80fc-bf3fa6a015e9'
+    #versioningScheme: byEnvVar
+    #versionEnvVar: 'CI_Version'
+    #includeSymbols: true
 
 - task: gittools.gitversion.gitversion-task.GitVersion@4
   displayName: GitVersion
@@ -46,9 +46,9 @@ steps:
   displayName: 'PowerShell Script'
 
 - task: VSBuild@1
-  displayName: 'Build solution Janono.Azure.DocumentsDB.Scale.sln'
+  displayName: 'Build solution Janono.WindowsAzure.Storage.Table.sln'
   inputs:
-    solution: Janono.Azure.DocumentsDB.Scale.sln
+    solution: Janono.WindowsAzure.Storage.Table.sln
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
     maximumCpuCount: true
@@ -62,21 +62,21 @@ steps:
     versionEnvVar: 'CI_Version'
     includeSymbols: true
 
-- task: NuGetCommand@2
-  displayName: 'NuGet push'
-  inputs:
-    command: push
-    publishVstsFeed: 'b0de43cf-f634-4601-80fc-bf3fa6a015e9'
-  continueOnError: true
+#- task: NuGetCommand@2
+  #displayName: 'NuGet push'
+  #inputs:
+    #command: push
+    #publishVstsFeed: 'b0de43cf-f634-4601-80fc-bf3fa6a015e9'
+  #continueOnError: true
 
-- task: NuGetCommand@2
-  displayName: 'NuGet push copy'
-  inputs:
-    command: push
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: external
-    publishFeedCredentials: 'Janono.Azure.DocumentsDB.Scale Nuget.org'
-  continueOnError: true
+#- task: NuGetCommand@2
+  #displayName: 'NuGet push copy'
+  #inputs:
+   # command: push
+#    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    #nuGetFeedType: external
+    #publishFeedCredentials: 'Janono.WindowsAzure.Storage.Table Nuget.org'
+  #continueOnError: true
 
 - task: PublishSymbols@2
   displayName: 'Publish symbols path'
