@@ -28,6 +28,12 @@ steps:
     command: 'restore'
     restoreSolution: '**/*.sln'
     feedsToUse: 'config'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'get-childitem ''c:\whatever'' -recurse -force | where-object { $_.FullName.Length -ge 256 } | select-object FullName | format-list'
+
 #- task: NuGetCommand@2
   #displayName: 'NuGet restore'
   #inputs:
