@@ -48,7 +48,7 @@ steps:
 - task: VSBuild@1
   displayName: 'Build solution Janono.WindowsAzure.Storage.Table.sln'
   inputs:
-    solution: Janono.WindowsAzure.Storage.Table.sln
+    solution: '**\*.sln'
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
     maximumCpuCount: true
