@@ -46,10 +46,16 @@ steps:
 #       $(Agent.OS)
 #       $(UserProfile)\.nuget\packages
 #     path: $(UserProfile)\.nuget\packages
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'restore'
+#     projects: 'src\Janono.WindowsAzure.Storage.Table.sln'
+#     feedsToUse: 'select'
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
-    projects: 'src\Janono.WindowsAzure.Storage.Table.sln'
+    projects: 'src\Janono.WindowsAzure.Storage.Table\Janono.WindowsAzure.Storage.Table.csproj'
     feedsToUse: 'select'
 
 # - task: NuGetCommand@2
