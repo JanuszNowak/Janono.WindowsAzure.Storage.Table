@@ -28,7 +28,6 @@
     public class AzureTableStorage<T> : IAzureTableStorage<T>
         where T : AzureTableEntity, new()
     {
-        #region " Public "
 
         public AzureTableStorage(AzureTableSettings settings)
         {
@@ -37,10 +36,8 @@
 
         public async Task<List<T>> GetList()
         {
-            //Table
             CloudTable table = await GetTableAsync();
 
-            //Query
             TableQuery<T> query = new TableQuery<T>();
 
             List<T> results = new List<T>();
@@ -189,8 +186,6 @@
 
             await table.ExecuteAsync(operation);
         }
-
-        #endregion
 
         private readonly AzureTableSettings settings;
 
