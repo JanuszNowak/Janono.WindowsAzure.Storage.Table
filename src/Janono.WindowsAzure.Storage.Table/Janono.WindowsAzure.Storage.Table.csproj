@@ -1,11 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>    
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>  
+    <PackageProjectUrl>https://github.com/janusznowak/Janono.WindowsAzure.Storage.Table</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/janusznowak/Janono.WindowsAzure.Storage.Table.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>table,storage,account,azure table storage,microsoft,azure,nosql,dotnetcore,netcore,netstandard</PackageTags>
+    <NeutralLanguage>en-Us</NeutralLanguage>
+    <Copyright>Janono (Janusz Nowak)</Copyright>
+    <Description>Azure Table Storage Generic Repository and Patterns Library.</Description>
+    <Authors>Janono (Janusz Nowak)</Authors>
+    <Company>Janono (Janusz Nowak)</Company>
+    <PackageIconUrl>https://raw.githubusercontent.com/janusznowak/nuget-icons/master/Janono.WindowsAzure.Storage.Table.png</PackageIconUrl>
+    <ApplicationIcon>Janono.Azure.DocumentsDB.Scale.ico</ApplicationIcon>  
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
   </ItemGroup>
-
 </Project>
