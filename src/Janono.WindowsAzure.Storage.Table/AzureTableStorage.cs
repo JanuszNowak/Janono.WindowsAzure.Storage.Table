@@ -16,8 +16,6 @@
     {
         Task Delete(string partitionKey, string rowKey);
         Task<T> GetItem(string partitionKey, string rowKey);
-
-
         Task<List<T>> GetList();
         Task<List<T>> GetList(string partitionKey);
         Task Insert(T item);
@@ -62,10 +60,8 @@
 
         public async Task<List<T>> GetList(string partitionKey)
         {
-            //Table
             CloudTable table = await GetTableAsync();
 
-            //Query
             TableQuery<T> query = new TableQuery<T>()
                 .Where(TableQuery.GenerateFilterCondition("PartitionKey",
                     QueryComparisons.Equal, partitionKey));
@@ -87,68 +83,45 @@
 
         public async Task<T> GetItem(string partitionKey, string rowKey)
         {
-            //Table
             CloudTable table = await GetTableAsync();
 
-            //Operation
             TableOperation operation = TableOperation.Retrieve<T>(partitionKey, rowKey);
 
-            //Execute
             TableResult result = await table.ExecuteAsync(operation);
 
             return (T)(dynamic)result.Result;
         }
 
         public async Task<List<T>> Query(TableQuery<T> query, CancellationToken ct = default(CancellationToken))
-        //public async Task<List<T>> Query(TableQuery<T> query, CancellationToken ct = default(CancellationToken))
         {
-            //Table
             CloudTable table = await GetTableAsync();
-
-
-            //https://docs.microsoft.com/en-us/azure/visual-studio/vs-storage-aspnet5-getting-started-tables
-            //Operation
-            //TableOperation operation = TableOperation.Retrieve<T>(partitionKey, rowKey);
-
-            //Execute
-            //TableResult result = await table.ExecuteQuerySegmentedAsync<T>(rangeQuery, null);
-
 
             var items = new List<T>();
             TableContinuationToken token = null;
 
             do
             {
-
                 TableQuerySegment<T> seg = await table.ExecuteQuerySegmentedAsync<T>(query, token);
                 token = seg.ContinuationToken;
                 items.AddRange(seg);
-                //if (onProgress != null) onProgress(items);
-
             } while (token != null);
 
             return items;
-
-
-            //return (T)(dynamic)result.Result;
         }
 
         public async Task Insert(T item)
         {
-            //Table
             CloudTable table = await GetTableAsync();
 
-            //Operation
             TableOperation operation = TableOperation.Insert(item);
 
-            //Execute
             await table.ExecuteAsync(operation);
         }
 
         public async Task Insert(List<T> items)
         {
             const int batchSize = TableConstants.TableServiceBatchMaximumOperations;
-            //Table
+
             CloudTable table = await GetTableAsync();
 
             while (items.Any())
@@ -199,28 +172,21 @@
 
         public async Task Update(T item)
         {
-            //Table
             CloudTable table = await GetTableAsync();
 
-            //Operation
             TableOperation operation = TableOperation.InsertOrReplace(item);
 
-            //Execute
             await table.ExecuteAsync(operation);
         }
 
         public async Task Delete(string partitionKey, string rowKey)
         {
-            //Item
             T item = await GetItem(partitionKey, rowKey);
 
-            //Table
             CloudTable table = await GetTableAsync();
 
-            //Operation
             TableOperation operation = TableOperation.Delete(item);
 
-            //Execute
             await table.ExecuteAsync(operation);
         }
 
@@ -236,10 +202,8 @@
             else
                 storageAccount = new CloudStorageAccount(new StorageCredentials(this.settings.StorageAccount, this.settings.StorageKey), true);
 
-            //Client
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-            //Table
             CloudTable table = tableClient.GetTableReference(this.settings.TableName);
             //await table.CreateIfNotExistsAsync();
 

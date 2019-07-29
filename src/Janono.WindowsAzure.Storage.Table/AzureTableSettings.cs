@@ -7,13 +7,13 @@
         public AzureTableSettings(string storageAccount, string storageKey, string tableName)
         {
             if (string.IsNullOrEmpty(storageAccount))
-                throw new ArgumentNullException("StorageAccount");
+                throw new ArgumentNullException("storageAccount");
 
             if (string.IsNullOrEmpty(storageKey))
-                throw new ArgumentNullException("StorageKey");
+                throw new ArgumentNullException("storageKey");
 
             if (string.IsNullOrEmpty(tableName))
-                throw new ArgumentNullException("TableName");
+                throw new ArgumentNullException("tableName");
 
             this.StorageAccount = storageAccount;
             this.StorageKey = storageKey;
