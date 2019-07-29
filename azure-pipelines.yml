@@ -104,6 +104,18 @@ steps:
    Write-Host ("##vso[task.setvariable variable=CI_Version;]$CI_Version")
   displayName: 'PowerShell Script'
 
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarcloud.io_Janono.WindowsAzure.Storage.Table'
+    organization: 'janusznowak-github'
+    scannerMode: 'MSBuild'
+    projectKey: 'janusznowak_Janono.WindowsAzure.Storage.Table'
+    projectName: 'Janono.WindowsAzure.Storage.Table'
+
+
+
+
 - task: VSBuild@1
   displayName: 'Build solution Janono.WindowsAzure.Storage.Table.sln'
   inputs:
@@ -152,3 +164,6 @@ steps:
 
 # - task: PublishBuildArtifacts@1
 #   displayName: 'Publish Artifact: drop'
+
+
+- task: SonarCloudAnalyze@1
