@@ -24,7 +24,7 @@
         Task InsertReplace(List<T> items);
         Task Update(T item);
         Task<CloudTable> GetTableAsyncCreateIfNotExistsAsync();
-        Task<CloudTable> DeleteIfExistsAsync()
+        Task<CloudTable> DeleteIfExistsAsync();
     }
 
     public class AzureTableStorage<T> : IAzureTableStorage<T>
