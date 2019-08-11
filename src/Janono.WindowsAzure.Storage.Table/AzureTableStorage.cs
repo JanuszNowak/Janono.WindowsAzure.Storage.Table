@@ -23,6 +23,7 @@
 
         Task InsertReplace(List<T> items);
         Task Update(T item);
+
     }
 
     public class AzureTableStorage<T> : IAzureTableStorage<T>
@@ -201,6 +202,38 @@
 
             CloudTable table = tableClient.GetTableReference(this.settings.TableName);
             //await table.CreateIfNotExistsAsync();
+
+            return table;
+        }
+
+        public async Task<CloudTable> GetTableAsyncCreateIfNotExistsAsync()
+        {
+            CloudStorageAccount storageAccount;
+            if (this.settings.StorageAccount == "devstoreaccount1")
+                storageAccount = CloudStorageAccount.Parse("UseDevelopmentStorage=true");
+            else
+                storageAccount = new CloudStorageAccount(new StorageCredentials(this.settings.StorageAccount, this.settings.StorageKey), true);
+
+            CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+
+            CloudTable table = tableClient.GetTableReference(this.settings.TableName);
+            await table.CreateIfNotExistsAsync();
+
+            return table;
+        }
+
+        public async Task<CloudTable> DeleteIfExistsAsync()
+        {
+            CloudStorageAccount storageAccount;
+            if (this.settings.StorageAccount == "devstoreaccount1")
+                storageAccount = CloudStorageAccount.Parse("UseDevelopmentStorage=true");
+            else
+                storageAccount = new CloudStorageAccount(new StorageCredentials(this.settings.StorageAccount, this.settings.StorageKey), true);
+
+            CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+
+            CloudTable table = tableClient.GetTableReference(this.settings.TableName);
+            await table.DeleteIfExistsAsync();
 
             return table;
         }
