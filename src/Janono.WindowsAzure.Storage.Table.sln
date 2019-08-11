@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{594FE8D8-DF5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8749EB0E-C326-435F-9080-589662465E33}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Janono.WindowsAzure.Storage.Table.XUnitTest", "..\tests\Janono.WindowsAzure.Storage.Table.XUnitTest\Janono.WindowsAzure.Storage.Table.XUnitTest.csproj", "{FA31EA96-5FFC-4CAC-8741-7852D131D864}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Janono.WindowsAzure.Storage.Table.XUnitTestNetFramework", "..\tests\Janono.WindowsAzure.Storage.Table.XUnitTestNetFramework\Janono.WindowsAzure.Storage.Table.XUnitTestNetFramework.csproj", "{7D82A5E0-2B7E-4E98-8670-E3F8C59C856A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,12 +23,22 @@ Global
 		{54DAD73D-B1F6-447F-B050-3B9F0E749DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54DAD73D-B1F6-447F-B050-3B9F0E749DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54DAD73D-B1F6-447F-B050-3B9F0E749DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA31EA96-5FFC-4CAC-8741-7852D131D864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA31EA96-5FFC-4CAC-8741-7852D131D864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA31EA96-5FFC-4CAC-8741-7852D131D864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA31EA96-5FFC-4CAC-8741-7852D131D864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D82A5E0-2B7E-4E98-8670-E3F8C59C856A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D82A5E0-2B7E-4E98-8670-E3F8C59C856A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D82A5E0-2B7E-4E98-8670-E3F8C59C856A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D82A5E0-2B7E-4E98-8670-E3F8C59C856A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{54DAD73D-B1F6-447F-B050-3B9F0E749DD4} = {594FE8D8-DF57-4C28-BDA3-C4D7EEC147B0}
+		{FA31EA96-5FFC-4CAC-8741-7852D131D864} = {8749EB0E-C326-435F-9080-589662465E33}
+		{7D82A5E0-2B7E-4E98-8670-E3F8C59C856A} = {8749EB0E-C326-435F-9080-589662465E33}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C53756C-F33B-4E71-9A76-8C2FB2EADE64}
