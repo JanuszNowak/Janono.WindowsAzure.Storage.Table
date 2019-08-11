@@ -114,7 +114,11 @@ steps:
     projectName: 'Janono.WindowsAzure.Storage.Table'
 
 
-
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
 
 - task: VSBuild@1
   displayName: 'Build solution Janono.WindowsAzure.Storage.Table.sln'
