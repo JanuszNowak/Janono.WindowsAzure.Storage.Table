@@ -10,7 +10,7 @@
 
 ## Janono.WindowsAzure.Storage.Table?
 
-Janono.Azure.DocumentsDB.Scale is implemenation of .....
+Janono.Azure.DocumentsDB.Scale is implemenation of Crud abstract operations library for Azure Storage Table. By providing contract class is simplify operations. Library is using performance optimized way for bulk operations.
 
 Package name                              | Stable                 
 ------------------------------------------|-------------------------------------------
