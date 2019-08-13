@@ -8,7 +8,9 @@
 
 ## Janono.WindowsAzure.Storage.Table
 
- Is still under active development at https://dev.azure.com/janono-pub/Janono.WindowsAzure.Storage.Table.
+ Is still under active development at 
+ https://github.com/janusznowak/Janono.WindowsAzure.Storage.Table
+ https://dev.azure.com/janono-pub/Janono.WindowsAzure.Storage.Table
 
 ## Janono.WindowsAzure.Storage.Table?
 
