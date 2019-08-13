@@ -21,39 +21,42 @@ Package name                              | Stable
 ## Example of usage Janono.WindowsAzure.Storage.Table
 
 ```
-using System.Collections.Generic;
-using Xunit;
+namespace Janono.WindowsAzure.Storage.Table.Example
+    using System.Collections.Generic;
+    using Xunit;
 
-public class ExampleOfUsage
-{
- internal class TestContract : AzureTableEntity
- {
- }
+    public class ExampleOfUsage
+    {
+        internal class TestContract : AzureTableEntity
+        {
+        }
 
- [Fact]
- public void ExampleOfUseBulkOptimizeInsertCreate()
- {
-  string storageAccount = "janonostorage";
-  string storageKey = System.Environment.GetEnvironmentVariable("storageKey");
+        [Fact]
+        public void ExampleOfUseBulkOptimizeInsertCreate()
+        {
+            string storageAccount = "janonostorage";
+            string storageKey = System.Environment.GetEnvironmentVariable("storageKey");
 
-  string tableName = "testTableNetF";
-  var stor = new AzureTableStorage<TestContract>(
-   new AzureTableSettings(
-   storageAccount: storageAccount,
-   storageKey: storageKey,
-   tableName: tableName));
+            string tableName = "testTableNetF";
+            var stor = new AzureTableStorage<TestContract>(
+            new AzureTableSettings(
+               storageAccount: storageAccount,
+               storageKey: storageKey,
+               tableName: tableName));
 
-   List<TestContract> listtest = new List<TestContract>();
-   for (int i = 0; i < 20000; i++)
-   {
-     var t = new TestContract();
-     t.PartitionKey = "_";
-     t.RowKey = i.ToString();
-     listtest.Add(t);
-   }
-  stor.GetTableAsyncCreateIfNotExistsAsync().GetAwaiter().GetResult();
-  stor.InsertReplace(listtest).GetAwaiter().GetResult();
-  stor.DeleteIfExistsAsync();
- }
+            List<TestContract> listtest = new List<TestContract>();
+            for (int i = 0; i < 20000; i++)
+            {
+                var t = new TestContract();
+                t.PartitionKey = "_";
+                t.RowKey = i.ToString();
+                listtest.Add(t);
+            }
+            stor.GetTableAsyncCreateIfNotExistsAsync().GetAwaiter().GetResult();
+            stor.InsertReplace(listtest).GetAwaiter().GetResult();
+            stor.DeleteIfExistsAsync();
+        }
+    }
 }
+
         ```
