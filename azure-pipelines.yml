@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - master
 
@@ -18,78 +13,15 @@ variables:
 
 
 steps:
-# - task: NuGetToolInstaller@0
-#   displayName: 'Use NuGet 4.9.3'
-#   inputs:
-#     versionSpec: 4.9.3
-
-
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet 3.5.0.1737'
   inputs:
     versionSpec: 5.2.0
-
-
-
-# - task: PowerShell@2
-#   displayName: 'List local nuget pacakges'
-#   inputs:
-#     targetType: 'inline'
-#     script: 'Get-ChildItem -Recurse $(UserProfile)\.nuget\packages'
-#   continueOnError: true
-#   #can not exist
-
-
-# - task: CacheBeta@0
-#   inputs:
-#     key: |
-#       $(Agent.OS)
-#       $(UserProfile)\.nuget\packages
-#     path: $(UserProfile)\.nuget\packages
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'restore'
-#     projects: 'src\Janono.WindowsAzure.Storage.Table.sln'
-#     feedsToUse: 'select'
-
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
     projects: 'src\Janono.WindowsAzure.Storage.Table\Janono.WindowsAzure.Storage.Table.csproj'
     feedsToUse: 'select'
-
-# - task: NuGetCommand@2
-#   inputs:
-#     command: 'restore'
-#     restoreSolution: '**/*.sln'
-#     feedsToUse: 'config'
-
-
-# - task: PowerShell@2
-#   displayName: 'List local nuget pacakges'
-#   inputs:
-#     targetType: 'inline'
-#     script: 'Get-ChildItem -Recurse $(UserProfile)\.nuget\packages'
-
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: 'get-childitem ''c:\'' -recurse -force | where-object { $_.FullName.Length -ge 256 } | select-object FullName | format-list'
-#     #workingDirectory: '%userprofile%\.nuget\packages'
-
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: 'Get-ChildItem Env:'
-
-#- task: NuGetCommand@2
-  #displayName: 'NuGet restore'
-  #inputs:
-    #vstsFeed: 'b0de43cf-f634-4601-80fc-bf3fa6a015e9'
-    #versioningScheme: byEnvVar
-    #versionEnvVar: 'CI_Version'
-    #includeSymbols: true
-
 - task: gittools.gitversion.gitversion-task.GitVersion@4
   displayName: GitVersion
   inputs:
@@ -118,7 +50,6 @@ steps:
   inputs:
     command: 'restore'
     restoreSolution: '**/*.sln'
-    feedsToUse: 'config'
 
 - task: VSBuild@1
   displayName: 'Build solution Janono.WindowsAzure.Storage.Table.sln'
@@ -144,30 +75,4 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: external
     publishFeedCredentials: 'Janono.WindowsAzure.Storage.Table-Nuget.org'
-
-#- task: NuGetCommand@2
-  #displayName: 'NuGet push'
-  #inputs:
-    #command: push
-    #publishVstsFeed: 'b0de43cf-f634-4601-80fc-bf3fa6a015e9'
-  #continueOnError: true
-
-#- task: NuGetCommand@2
-  #displayName: 'NuGet push copy'
-  #inputs:
-   # command: push
-#    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    #nuGetFeedType: external
-    #publishFeedCredentials: 'Janono.WindowsAzure.Storage.Table Nuget.org'
-  #continueOnError: true
-
-# - task: PublishSymbols@2
-#   displayName: 'Publish symbols path'
-#   inputs:
-#     SymbolServerType: TeamServices
-
-# - task: PublishBuildArtifacts@1
-#   displayName: 'Publish Artifact: drop'
-
-
 - task: SonarCloudAnalyze@1
