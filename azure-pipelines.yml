@@ -64,10 +64,10 @@ steps:
   inputs:
     command: pack
     includeNuGetOrg: false
+    packagesToPack: '**/src/**/*.csproj'
     versioningScheme: byEnvVar
     versionEnvVar: 'CI_Version'
     includeSymbols: true
-
     
 - task: NuGetCommand@2
   inputs:
