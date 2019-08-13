@@ -20,6 +20,7 @@ Package name                              | Stable
 
 ## Example of usage Janono.WindowsAzure.Storage.Table
 
+```
    internal class TestContract : AzureTableEntity
         {
         }
@@ -49,3 +50,4 @@ Package name                              | Stable
             stor.InsertReplace(listtest).GetAwaiter().GetResult();
             stor.DeleteIfExistsAsync();
         }
+        ```
