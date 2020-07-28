@@ -136,17 +136,17 @@
             }
         }
 
-        public async Task InsertReplace(List<T> entities)
+        public async Task InsertReplace(List<T> items)
         {
             CloudTable myCloudTable = await GetTableAsync();
             var taskCount = 0;
             var taskThreshold = 300; // Seems to be a good value to start with
             var batchTasks = new List<Task<IList<TableResult>>>();
-            for (var i = 0; i < entities.Count; i += TableConstants.TableServiceBatchMaximumOperations)
+            for (var i = 0; i < items.Count; i += TableConstants.TableServiceBatchMaximumOperations)
             {
                 taskCount++;
 
-                var batchItems = entities.Skip(i)
+                var batchItems = items.Skip(i)
                                          .Take(TableConstants.TableServiceBatchMaximumOperations)
                                          .ToList();
 
