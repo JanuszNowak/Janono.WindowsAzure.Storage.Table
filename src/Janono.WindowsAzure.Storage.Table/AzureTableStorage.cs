@@ -201,8 +201,7 @@
 
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-            CloudTable table = tableClient.GetTableReference(this.settings.TableName);
-            //await table.CreateIfNotExistsAsync();
+            CloudTable table = tableClient.GetTableReference(this.settings.TableName);            
 
             return table;
         }
