@@ -68,7 +68,7 @@ steps:
     versioningScheme: byEnvVar
     versionEnvVar: 'CI_Version'
     includeSymbols: true
-    
+        
 - task: NuGetCommand@2
   inputs:
     command: 'push'
@@ -77,3 +77,6 @@ steps:
     publishFeedCredentials: 'Janono.WindowsAzure.Storage.Table-Nuget.org'
   continueOnError: true
 - task: SonarCloudAnalyze@1
+
+- task: whitesource.ws-bolt.bolt.wss.WhiteSource Bolt@20
+  displayName: 'WhiteSource Bolt'
