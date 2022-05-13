@@ -1,4 +1,4 @@
-﻿namespace Janono.WindowsAzure.Storage.Table
+namespace Janono.WindowsAzure.Storage.Table
 {
     using System;
 

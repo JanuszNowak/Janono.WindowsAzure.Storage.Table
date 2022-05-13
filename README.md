@@ -8,7 +8,7 @@
 
 ## Janono.WindowsAzure.Storage.Table
 
- Is still under active development at 
+ Is still under active development at
  https://github.com/janusznowak/Janono.WindowsAzure.Storage.Table
  https://dev.azure.com/janono-pub/Janono.WindowsAzure.Storage.Table
 
@@ -16,9 +16,9 @@
 
 Janono.Azure.DocumentsDB.Scale is implemenation of Crud abstract operations library for Azure Storage Table. By providing contract class is simplify operations. Library is using performance optimized way for bulk operations.
 
-Package name                              | Stable                 
+Package name                              | Stable
 ------------------------------------------|-------------------------------------------
-`Janono.WindowsAzure.Storage.Table`          | [![NuGet](https://img.shields.io/nuget/v/Janono.WindowsAzure.Storage.Table.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Janono.WindowsAzure.Storage.Table/) 
+`Janono.WindowsAzure.Storage.Table`          | [![NuGet](https://img.shields.io/nuget/v/Janono.WindowsAzure.Storage.Table.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Janono.WindowsAzure.Storage.Table/)
 
 
 
@@ -44,9 +44,9 @@ namespace Janono.WindowsAzure.Storage.Table.Example
             string tableName = "testTableNetF";
             var stor = new AzureTableStorage<TestContract>(
             new AzureTableSettings(
-               storageAccount: storageAccount,
-               storageKey: storageKey,
-               tableName: tableName));
+                storageAccount: storageAccount,
+                storageKey: storageKey,
+                tableName: tableName));
 
             List<TestContract> listtest = new List<TestContract>();
             for (int i = 0; i < 20000; i++)

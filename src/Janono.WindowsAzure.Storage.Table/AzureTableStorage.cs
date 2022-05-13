@@ -1,4 +1,4 @@
-﻿namespace Janono.WindowsAzure.Storage.Table
+namespace Janono.WindowsAzure.Storage.Table
 {
     using System.Linq;
     using System.Collections.Generic;
@@ -147,8 +147,8 @@
                 taskCount++;
 
                 var batchItems = items.Skip(i)
-                                         .Take(TableConstants.TableServiceBatchMaximumOperations)
-                                         .ToList();
+                                        .Take(TableConstants.TableServiceBatchMaximumOperations)
+                                        .ToList();
 
                 var batch = new TableBatchOperation();
                 foreach (var item in batchItems)
@@ -201,7 +201,7 @@
 
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-            CloudTable table = tableClient.GetTableReference(this.settings.TableName);            
+            CloudTable table = tableClient.GetTableReference(this.settings.TableName);
 
             return table;
         }

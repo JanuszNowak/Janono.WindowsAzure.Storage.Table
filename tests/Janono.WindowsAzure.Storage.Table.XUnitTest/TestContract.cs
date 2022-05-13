@@ -1,4 +1,4 @@
-﻿namespace Janono.WindowsAzure.Storage.Table.XUnitTest
+namespace Janono.WindowsAzure.Storage.Table.XUnitTest
 {
     internal class TestContract : AzureTableEntity
     {
