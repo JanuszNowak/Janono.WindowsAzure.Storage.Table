@@ -8,20 +8,20 @@ pool:
   - visualstudio
 
 variables:
-  BuildPlatform: 'any cpu'
-  BuildConfiguration: 'release'
+  BuildPlatform: any cpu
+  BuildConfiguration: release
 
 
 steps:
 - task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 3.5.0.1737'
+  displayName: Use NuGet 3.5.0.1737
   inputs:
     versionSpec: 5.2.0
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'restore'
-    projects: 'src\Janono.WindowsAzure.Storage.Table\Janono.WindowsAzure.Storage.Table.csproj'
-    feedsToUse: 'select'
+    command: restore
+    projects: src\Janono.WindowsAzure.Storage.Table\Janono.WindowsAzure.Storage.Table.csproj
+    feedsToUse: select
 - task: gittools.gitversion.gitversion-task.GitVersion@4
   displayName: GitVersion
   inputs:
@@ -29,54 +29,54 @@ steps:
     preferBundledVersion: false
 
 - powershell: |
-   $UtcDateTime = (Get-Date).ToUniversalTime()
-   $FormattedDateTime = (Get-Date -Date $UtcDateTime -Format "yyyyMMdd-HHmmss")
-   $CI_Version = "$env:GITVERSION_MAJORMINORPATCH-ci-$FormattedDateTime"
-   
-   Write-Host ("##vso[task.setvariable variable=CI_Version;]$CI_Version")
-  displayName: 'PowerShell Script'
+    $UtcDateTime = (Get-Date).ToUniversalTime()
+    $FormattedDateTime = (Get-Date -Date $UtcDateTime -Format "yyyyMMdd-HHmmss")
+    $CI_Version = "$env:GITVERSION_MAJORMINORPATCH-ci-$FormattedDateTime"
+
+    Write-Host ("##vso[task.setvariable variable=CI_Version;]$CI_Version")
+  displayName: PowerShell Script
 
 
 - task: SonarCloudPrepare@1
   inputs:
-    SonarCloud: 'sonarcloud.io_Janono.WindowsAzure.Storage.Table'
-    organization: 'janusznowak-github'
-    scannerMode: 'MSBuild'
-    projectKey: 'janusznowak_Janono.WindowsAzure.Storage.Table'
-    projectName: 'Janono.WindowsAzure.Storage.Table'
+    SonarCloud: sonarcloud.io_Janono.WindowsAzure.Storage.Table
+    organization: janusznowak-github
+    scannerMode: MSBuild
+    projectKey: janusznowak_Janono.WindowsAzure.Storage.Table
+    projectName: Janono.WindowsAzure.Storage.Table
 
 
 - task: NuGetCommand@2
   inputs:
-    command: 'restore'
+    command: restore
     restoreSolution: '**/*.sln'
 
 - task: VSBuild@1
-  displayName: 'Build solution Janono.WindowsAzure.Storage.Table.sln'
+  displayName: Build solution Janono.WindowsAzure.Storage.Table.sln
   inputs:
     solution: '**\*.sln'
-    platform: '$(BuildPlatform)'
-    configuration: '$(BuildConfiguration)'
+    platform: $(BuildPlatform)
+    configuration: $(BuildConfiguration)
     maximumCpuCount: true
 
 - task: NuGetCommand@2
-  displayName: 'NuGet pack'
+  displayName: NuGet pack
   inputs:
     command: pack
     includeNuGetOrg: false
     packagesToPack: '**/src/**/*.csproj'
     versioningScheme: byEnvVar
-    versionEnvVar: 'CI_Version'
+    versionEnvVar: CI_Version
     includeSymbols: true
-        
+
 - task: NuGetCommand@2
   inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    command: push
+    packagesToPush: $(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg
     nuGetFeedType: external
-    publishFeedCredentials: 'Janono.WindowsAzure.Storage.Table-Nuget.org'
+    publishFeedCredentials: Janono.WindowsAzure.Storage.Table-Nuget.org
   continueOnError: true
 - task: SonarCloudAnalyze@1
 
 - task: whitesource.ws-bolt.bolt.wss.WhiteSource Bolt@20
-  displayName: 'WhiteSource Bolt'
+  displayName: WhiteSource Bolt

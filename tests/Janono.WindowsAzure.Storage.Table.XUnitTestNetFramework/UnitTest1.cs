@@ -17,10 +17,10 @@ namespace Janono.WindowsAzure.Storage.Table.XUnitTestNetFramework
             string tableName = "testTableNetF" + osNameAndVersion;
             var setting = new AzureTableSettings(storageAccount, storageKey, tableName);
             var stor = new AzureTableStorage<TestContract>(
-           new AzureTableSettings(
-               storageAccount: storageAccount,
-               storageKey: storageKey,
-               tableName: tableName));
+            new AzureTableSettings(
+                storageAccount: storageAccount,
+                storageKey: storageKey,
+                tableName: tableName));
 
             List<TestContract> listtest = new List<TestContract>();
             for (int i = 0; i < 20000; i++)
