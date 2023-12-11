@@ -11,4 +11,4 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       # Dockerfile:
-      - uses: azure/azure-storage-net@v9.3.3
+      - uses: azure/azure-storage-net@v11.2.3
